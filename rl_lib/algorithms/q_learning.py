@@ -12,6 +12,9 @@ class QLearning:
         self.discount_factor = discount_factor
         self.q_table = np.zeros(shape=(n_states, n_actions))
 
+    def get_best_action(self, s_t):
+        return np.argmax(self.q_table[s_t])
+
     def update(self, s_t, a_t, reward, s_next):
         self.q_table[s_t, a_t] += self.learning_rate * self._get_temporal_difference(s_t, a_t, reward, s_next)
 
